@@ -1,0 +1,104 @@
+html {
+  box-sizing: content-box;
+  font-size: 62.5%; /*1rem which is equal to 10px*/
+}
+* {
+  box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  --primary-text: #000;
+  --primary-bg: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: #fff;
+    background-color: #000;
+  }
+}
+
+body {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 1.7rem;
+}
+
+button,
+img,
+a,
+li {
+  transition: all 0.3s ease-in-out;
+}
+
+.intro {
+  inline-size: 100dvw;
+  block-size: 9rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  background-image: linear-gradient(to right, #0bd0e1, #1571e1);
+  color: #edf1f7;
+}
+
+.intro > h1 {
+  block-size: inherit;
+  padding-inline: 1rem;
+  display: flex;
+  align-items: end;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+    rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+}
+
+.container {
+  inline-size: 100%;
+  block-size: calc(var(--height) * 1.14);
+  margin-block-start: 1rem;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, #000 15% 85%, transparent);
+}
+
+.container .list {
+  list-style-type: none;
+  display: flex;
+  inline-size: 100%;
+  min-inline-size: calc(var(--width) * var(--total));
+  position: relative;
+}
+
+.container .list .item {
+  inline-size: var(--width);
+  block-size: var(--height);
+  position: absolute;
+  left: 100%;
+  filter: grayscale(1);
+  animation: scroll 30s linear infinite;
+  animation-delay: calc(
+    (30s / var(--total)) * (var(--position) - var(--total))
+  );
+}
+
+.container .list .item img {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+
+.container:hover .item {
+  animation-play-state: paused !important;
+  cursor: pointer;
+}
+
+.container .item:hover {
+  filter: grayscale(0);
+  transform: scale(1.05);
+}
+
+@keyframes scroll {
+  from {
+    left: 100%;
+  }
+  to {
+    left: calc(var(--width) * -1);
+  }
+}

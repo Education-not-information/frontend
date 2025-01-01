@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>An Infinit scroll Animation</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>♾️</text></svg>"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="intro">
+      <h1>Education not Information</h1>
+    </header>
+
+    <section id="root"></section>
+    <!-- 
+    <main class="container" style="--width: 13rem; --height: 9rem; --total: 7">
+      <ul class="list">
+        <li class="item" style="--position: 1">
+          <img
+            src="https://img.freepik.com/free-vector/dk-letter-logo-initial-colorful-gradient_343694-1303.jpg?ga=GA1.1.1753686308.1731004166&semt=ais_hybrid"
+            alt="image"
+          />
+        </li>
+        <li class="item" style="--position: 2">
+          <img
+            src="https://img.freepik.com/free-vector/colorful-logo-abstract-people-template_361591-520.jpg?ga=GA1.1.1753686308.1731004166&semt=ais_hybrid"
+            alt="image"
+          />
+        </li>
+        <li class="item" style="--position: 3">
+          <img
+            src="https://img.freepik.com/free-vector/gradient-logo-template_23-2148966845.jpg?ga=GA1.1.1753686308.1731004166&semt=ais_hybrid"
+            alt="image"
+          />
+        </li>
+        <li class="item" style="--position: 4">
+          <img
+            src="https://img.freepik.com/free-vector/branding-identity-corporate-vector-logo-design_460848-8717.jpg?ga=GA1.1.1753686308.1731004166&semt=ais_hybrid"
+            alt="image"
+          />
+        </li>
+        <li class="item" style="--position: 5">
+          <img
+            src="https://img.freepik.com/free-vector/branding-identity-corporate-logo-vector-design-template_460848-13992.jpg?ga=GA1.1.1753686308.1731004166&semt=ais_hybrid"
+            alt="image"
+          />
+        </li>
+        <li class="item" style="--position: 6">
+          <img
+            src="https://img.freepik.com/premium-vector/minimal-awesome-creative-letter-l-arrow-logo-design-vector-template_766194-1651.jpg?ga=GA1.1.1753686308.1731004166&semt=ais_hybrid"
+            alt="image"
+          />
+        </li>
+        <li class="item" style="--position: 7">
+          <img
+            src="https://img.freepik.com/free-vector/gradient-quill-pen-logo-template_23-2149840300.jpg?ga=GA1.1.1753686308.1731004166&semt=ais_hybrid"
+            alt="image"
+          />
+        </li>
+      </ul>
+    </main> -->
+  </body>
+
+  <script>
+    const logos = [
+      "https://img.freepik.com/free-vector/dk-letter-logo-initial-colorful-gradient_343694-1303.jpg?ga=GA1.1.1753686308.1731004166&semt=ais_hybrid",
+      "https://img.freepik.com/free-vector/colorful-logo-abstract-people-template_361591-520.jpg?ga=GA1.1.1753686308.1731004166&semt=ais_hybrid",
+      "https://img.freepik.com/free-vector/gradient-logo-template_23-2148966845.jpg?ga=GA1.1.1753686308.1731004166&semt=ais_hybrid",
+      "https://img.freepik.com/free-vector/gradient-quill-pen-logo-template_23-2149820251.jpg?ga=GA1.1.1753686308.1731004166&semt=ais_hybrid",
+      "https://img.freepik.com/free-vector/branding-identity-corporate-vector-logo-design_460848-8717.jpg?ga=GA1.1.1753686308.1731004166&semt=ais_hybrid",
+      "https://img.freepik.com/free-vector/holidays-travel-logo-template-design_460848-11682.jpg?ga=GA1.1.1753686308.1731004166&semt=ais_hybrid",
+      "https://img.freepik.com/free-vector/letter-o-e-colorful-icon-logo-design_474888-3213.jpg?ga=GA1.1.1753686308.1731004166&semt=ais_hybrid",
+      "https://img.freepik.com/free-vector/branding-identity-corporate-logo-vector-design-template_460848-13992.jpg?ga=GA1.1.1753686308.1731004166&semt=ais_hybrid",
+      "https://img.freepik.com/premium-vector/bird-logo-colorful-gradient-style_483537-727.jpg?ga=GA1.1.1753686308.1731004166&semt=ais_hybrid",
+      "https://img.freepik.com/free-vector/yellow-abstract-logo_1222-71.jpg?ga=GA1.1.1753686308.1731004166&semt=ais_hybrid",
+
+      "https://img.freepik.com/premium-vector/minimal-awesome-creative-letter-l-arrow-logo-design-vector-template_766194-1651.jpg?ga=GA1.1.1753686308.1731004166&semt=ais_hybrid",
+      "https://img.freepik.com/free-vector/flat-design-mc-logo-design_23-2149482035.jpg?ga=GA1.1.1753686308.1731004166&semt=ais_hybrid",
+      "https://img.freepik.com/free-vector/gradient-printing-house-logo-template_23-2149763504.jpg?ga=GA1.1.1753686308.1731004166&semt=ais_hybrid",
+      "https://img.freepik.com/free-vector/simple-letter-e-initial-logo-company-business_530521-1310.jpg?ga=GA1.1.1753686308.1731004166&semt=ais_hybrid",
+      "https://img.freepik.com/free-vector/gradient-quill-pen-logo-template_23-2149840300.jpg?ga=GA1.1.1753686308.1731004166&semt=ais_hybrid",
+    ];
+
+    root.innerHTML = `<main class="container" style="--width: 13rem; --height: 9rem; --total: ${
+      logos.length
+    }">
+      <ul class="list">
+        ${logos
+          .map(
+            (logo, idx) => `<li class="item" style="--position: ${idx}">
+          <img
+            src="${logo}"
+            alt="image"
+          />
+        </li>`
+          )
+          .join("")}
+      </ul>
+    </main>`;
+  </script>
+</html>
